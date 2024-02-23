@@ -52,9 +52,9 @@ public static class ClsJson
         return str.ToString();
     }
 
-    public static string ProductAggrigateJson(string productName, string description, string image,
-        string priceRials, string[] offerUrl, string lowPrice, string highPrice, string logo, string keywords,
-        string manufacturer, string releaseDate, string slogan, string alternateName, string disambiguatingDescription)
+     public static string ProductAggrigateJson(string productName, string description, string image,
+            string[] offerUrl, string lowPrice, string highPrice, string logo, string keywords,
+            string manufacturer, string releaseDate, string slogan, string alternateName, string disambiguatingDescription)
     {
         if (offerUrl.Length > 0)
         {
@@ -87,8 +87,10 @@ public static class ClsJson
                 sb.Append("\"url\": \"" + item + "\"");
                 sb.Append("},");
             }
-            sb.Append("]}}</script>");
-            return sb.ToString();
+
+            var temp = sb.ToString().TrimEnd(',');
+            temp += "]}}</script>";
+            return temp;
         }
 
         return "هیچ محصولی وجود ندارد";
